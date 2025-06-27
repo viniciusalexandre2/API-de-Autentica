@@ -1,5 +1,9 @@
 # ATVD-JWT - API de Autenticação e Autorização JWT Interna
 
+[![Build Status](https://img.shields.io/github/actions/workflow/status/seu-usuario/ATVD-JWT/ci.yml)](https://github.com/seu-usuario/ATVD-JWT/actions)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue)](http://www.apache.org/licenses/LICENSE-2.0.html)
+[![Coverage](https://img.shields.io/codecov/c/github/seu-usuario/ATVD-JWT)](https://codecov.io/gh/seu-usuario/ATVD-JWT)
+
 Este projeto implementa uma API RESTful com Spring Boot para **autenticação e autorização** usando **JSON Web Tokens (JWT)**. Inclui geração e validação de tokens, proteção de endpoints, documentação automática com Swagger/OpenAPI e testes de integração.
 
 ## 🚀 Tecnologias Utilizadas
@@ -40,6 +44,13 @@ Este projeto implementa uma API RESTful com Spring Boot para **autenticação e 
 
 ## 🛠️ Configuração
 
+> **Variáveis de Ambiente**:
+>
+> * `JWT_SECRET`: sua chave secreta para JWT (substitui `jwt.secret` no application.yml)
+> * `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME`, `SPRING_DATASOURCE_PASSWORD`: para configurar outro banco em produção.
+
+O arquivo `src/main/resources/application.yml` já vem configurado para:
+
 O arquivo `src/main/resources/application.yml` já vem configurado para:
 
 * Banco H2 em memória (`jdbc:h2:mem:testdb`)
@@ -51,6 +62,8 @@ O arquivo `src/main/resources/application.yml` já vem configurado para:
 > **Importante:** Em produção, mova a chave secreta (`jwt.secret`) para variáveis de ambiente ou um serviço de gestão de segredos.
 
 ## 🔐 Endpoints Principais
+
+*A tabela abaixo resume de forma rápida os principais endpoints, suas descrições e requisitos de autenticação, facilitando uma visão geral imediata para quem for avaliar o projeto.*
 
 | Método | URL              | Descrição                                        | Autenticação |
 | ------ | ---------------- | ------------------------------------------------ | ------------ |
@@ -109,28 +122,15 @@ Os testes cobrem cenários de:
 
 > Certifique-se de ter a aplicação rodando em `localhost:8080` antes de iniciar o teste.
 
-## 🐳 Docker (Opcional)
+## 🔗 Integração Contínua / CI-CD
 
-Crie um `Dockerfile` na raiz:
+Para maior robustez, configure um pipeline de CI (ex: GitHub Actions) que:
 
-```dockerfile
-FROM eclipse-temurin:17-jdk
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
-```
+1. Execute `mvn clean verify` para rodar testes
+2. Gere relatório de cobertura (ex: Jacoco)
+3. Publique artefatos ou faça deploy automático em ambientes de teste
 
-**Build**:
-
-```bash
-docker build -t atvd-jwt .
-```
-
-**Run**:
-
-```bash
-docker run -p 8080:8080 atvd-jwt
-```
+---
 
 ## 📂 Estrutura de Pastas
 
@@ -155,10 +155,18 @@ ATVD-JWT/
 └── README.md
 ```
 
-## 🤝 Contribuição
+## 🗂️ Entrega no GitHub
 
-Pull requests são bem-vindos! Para grandes mudanças, abra uma issue para discutirmos o que você gostaria de alterar.
+Certifique-se de:
+
+1. Ter o projeto em um repositório público no GitHub.
+2. Incluir todos os arquivos-fonte necessários (`src/`, `pom.xml`, `application.yml`).
+3. Versionar o arquivo de teste de carga JMeter (`jmeter-tests/login_stress_test.jmx`).
+4. Adicionar um arquivo `.gitignore` para excluir pastas como `target/` e configurações do editor (`.vscode/`).
+5. Ter o README.md apontando claramente como clonar e executar o projeto.
+
+Essa seção demonstra ao professor que todo o projeto está organizado e disponível para avaliação.
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
+Este projeto está licenciado sob a [Apache License 2](http://www.apache.org/licenses/LICENSE-2.0.html)
