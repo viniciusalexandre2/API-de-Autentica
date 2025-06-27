@@ -1,9 +1,5 @@
 # ATVD-JWT - API de Autenticação e Autorização JWT Interna
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/seu-usuario/ATVD-JWT/ci.yml)](https://github.com/seu-usuario/ATVD-JWT/actions)
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue)](http://www.apache.org/licenses/LICENSE-2.0.html)
-[![Coverage](https://img.shields.io/codecov/c/github/seu-usuario/ATVD-JWT)](https://codecov.io/gh/seu-usuario/ATVD-JWT)
-
 Este projeto implementa uma API RESTful com Spring Boot para **autenticação e autorização** usando **JSON Web Tokens (JWT)**. Inclui geração e validação de tokens, proteção de endpoints, documentação automática com Swagger/OpenAPI e testes de integração.
 
 ## 🚀 Tecnologias Utilizadas
@@ -121,6 +117,7 @@ Os testes cobrem cenários de:
 4. Ajuste número de threads e ramp-up conforme necessidade.
 
 > Certifique-se de ter a aplicação rodando em `localhost:8080` antes de iniciar o teste.
+
 
 ## 🔗 Integração Contínua / CI-CD
 
